@@ -52,6 +52,27 @@ export default function DateRangePicker({ setMainDate }) {
   ];
 
   useEffect(() => {
+    const today = new Date();
+    const startOfToday = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+    const sevenDaysLater = new Date(startOfToday);
+    sevenDaysLater.setDate(startOfToday.getDate() + 6);
+
+    setSelectedRange({ start: startOfToday, end: sevenDaysLater });
+    setTempRange({ start: startOfToday, end: sevenDaysLater });
+
+    setCurrentMonth(startOfToday.getMonth());
+    setCurrentYear(startOfToday.getFullYear());
+
+    const label = formatDisplayRange(startOfToday, sevenDaysLater, timezone);
+    setInputValue(label);
+    setMainDate({ start: startOfToday, end: sevenDaysLater });
+  }, []);
+
+  useEffect(() => {
     setMainDate(selectedRange);
   }, [selectedRange]);
 
