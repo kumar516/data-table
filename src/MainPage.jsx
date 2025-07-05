@@ -129,7 +129,7 @@ const MainPage = () => {
   return (
     <div className="main_page_container">
       <div className="header_container">
-        <img src="/logo.png" alt="L" />
+        <img src="/data-table/logo.png" alt="L" />
       </div>
       <div className="data-container">
         <DateRangePicker setMainDate={setDate} />
